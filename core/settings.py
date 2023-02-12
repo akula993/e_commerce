@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,10 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
 
     # my apps
     'apps.shop.apps.ShopConfig',
+    'apps.userauths.apps.UserauthsConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -83,7 +82,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -103,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -114,7 +111,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -130,3 +126,23 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    # заголовок окна (по умолчанию будет current_admin_site.site_title, если отсутствует или None)
+    'site_title': "Админка",
+    # Заголовок на экране входа в систему (максимум 19 символов) (по умолчанию используется current_admin_site.site_header, если отсутствует или None)
+    "site_header": "Главная Админка",
+    # Заголовок для бренда (максимум 19 символов) (по умолчанию используется current_admin_site.site_header, если отсутствует или None)
+    "site_brand": "Админка магаза",
+    # Логотип, используемый для вашего сайта, должен присутствовать в статических файлах, используемых для бренда в левом верхнем углу
+    "site_logo": "shops-frontend/imgs/theme/loading.gif",
+
+    # Приветственный текст на экране входа в систему
+    "welcome_sign": "Добро пожаловать в библиотеку",
+
+    # Авторские права на нижний колонтитул
+    "copyright": "",
+
+}
+
+AUTH_USER_MODEL = 'userauths.User'
